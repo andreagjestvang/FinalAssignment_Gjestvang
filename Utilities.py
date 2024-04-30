@@ -13,6 +13,8 @@ def input_function():
     elif user_input == "Graph":
         return 2
 
+
+
 def graph_generator(): 
     data_anscombe =  pd.read_csv("Anscombe_data.csv")
 
@@ -24,5 +26,6 @@ def graph_generator():
     )
     return anscombe_chart
 
-def new_print(): 
-    print("This sucks")
+
+if __name__ == "__main__":
+    print("Successfully run Utilities.py")
