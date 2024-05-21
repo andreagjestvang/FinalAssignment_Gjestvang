@@ -8,9 +8,15 @@ from asciimatics.renderers import FigletText
 from asciimatics.scene import Scene
 
 def MET_data_loader(MET_data_csv):
+    """Taking a csv file from the Norwegian Metrological Institue and returning a dataframe containing only
+    summer precipitation measures.
 
-    # Loading the perticipation data from Pasvik weather station for year 2009-2023
-    # Data fetched from: Data er gyldig per 19.05.2024 (CC BY 4.0), Meteorologisk institutt (MET)
+    Args:
+        MET_data_csv (csv file): name of a csv-file to be loaded
+
+    Returns:
+        dataframe: a dataframe including only summer-temperatures of the csv file
+    """
     pasvik_rain = pd.read_csv(Path(MET_data_csv), sep=";", decimal=",")
 
     #Splitting into month and year
@@ -43,6 +49,12 @@ def MET_data_loader(MET_data_csv):
 
 
 def is_valid_function():
+    """Takining input from user. 
+    Recusivly asking for new input until the input is in valid format.
+
+    Returns:
+        list: list of integers, years on format YYYY.
+    """
     print("An input:")
     input_years = input("")
     chosen_years = input_years.split(",")
@@ -72,8 +84,18 @@ def is_valid_function():
 
 
 def choose_year_function(dataset):
-    """Docstring:
-    Taking in a dataset with a Year-column and marking the years that has been chosen as input below."""
+    """Running the is_valid function, marking the chosen years as choesn=TRUE in the dataset,
+    calculating mean.
+
+    Args:
+        dataset (dataframe): a dataframe with the percipitation data
+
+    Returns:
+        list : 
+            dataframe: the modified precipitation dataframe
+            list: the chosen years user want to examine
+            mean_prec: the mean precipitation over the chosen years.
+    """
     
     #Making a new column based on chosen year-values and calculation mean precipitation
     print("Write a list of years you want to examine, seperated by ','")
@@ -90,28 +112,47 @@ def choose_year_function(dataset):
     for i in chosen_years:
         dataset.loc[dataset["Year"] == i, "Chosen"] = True
         total_prec += dataset.loc[dataset["Year"] == i, "Prec_mm"].values[0]
-
+    #Calculating mean
     mean_prec = round(total_prec / len(chosen_years),2)
 
     return dataset, chosen_years, mean_prec
 
+
+
 def graph_generator(chosen_dataset,name): 
-    """Docstring: creating a graph based on the inputted dataset"""
+    """Generating a graph and saving it as png
+
+    Args:
+        chosen_dataset (dataframe): dataframe of precipitation to be graphed
+        name (string): a name to call the graph
+    """
     chosen_chart = alt.Chart(chosen_dataset).mark_bar().encode(
     x= alt.X("Date").title("Year"),
     y=alt.Y("Prec_norm").title("Precipitation related to normality (1990-2020)"),
     color="Chosen",
     ) + alt.Chart().mark_rule(strokeDash=[12, 6], size=1).encode(y=alt.datum(100))
     chosen_chart.save(f"{name}.png")
+    return
+
 
 def save_to_file_function(information_dict, name_csv):
-    """Docsting: saving a dictionary to a file with the given name"""
+    """A function that will save the given dictionary as a csv-file
+
+    Args:
+        information_dict (dictionary): a dictionary with chosen periods from user
+        name_csv (string): a name to call the file
+    """
     df = pd.DataFrame.from_dict(information_dict, orient="index", columns= ["Prec_mm"])
     df.to_csv(f"{name_csv}.csv")
     return
 
 
 def finished_screen(screen):
+    """A dashing ending screen to say goodbye to user, using the asciimatics packadge
+
+    Args:
+        screen (asciimatics.screen): the screen the ending graphics will be displayed on
+    """
     effects = [
         Cycle(
             screen,
@@ -126,6 +167,7 @@ def finished_screen(screen):
     screen.play([Scene(effects, 500)])
 
 
+#When running utilities.py, the is_valid_function() will be tested
 if __name__ == "__main__":
-    #print("this is what the function returns:", is_valid_function())
+    print("this is what the function returns:", is_valid_function())
     print("Successfully run Utilities.py")

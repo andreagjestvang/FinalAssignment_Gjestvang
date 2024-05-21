@@ -43,6 +43,7 @@ def main():
             
             print(f"The mean percipitation for your chosen years {chosen_list[1]}:")
             print(f"{chosen_list[2]} mm\n")
+
         elif program_choise == "F" or program_choise == "f":
             print("The gererator will end when saving to file.")
             print("Do you want to choose more years?")
@@ -64,9 +65,11 @@ def main():
        
         elif program_choise == "G" or program_choise == "g":
             print("This stops the generator and returns a graph:")
+            #Choose the years user want diplayed in graph
             chosen_list = ut.choose_year_function(pasvik_summer)
             print("What do you want to call your graph-file?")
             name1 = input("Name: ")
+            #Creating graph with graph_generator
             ut.graph_generator(chosen_list[0], name1)
             print("\n")
             print("Thank you for using the P-PIG!")
@@ -78,10 +81,10 @@ def main():
     print("Thank you for using the P-PIG!")
     print("Outro-screen will start in 5 seconds...")
     time.sleep(5)
+    #Running end-message using asciimetrics packadge
     Screen.wrapper(ut.finished_screen)
 
     return
-
 
 
 # If runing main directly, run the main-function:
