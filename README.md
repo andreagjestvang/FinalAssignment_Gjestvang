@@ -20,9 +20,12 @@ For each loop, the user will be asked to choose one of the following selections:
 - Create a graph (G)
 - Quit Generator (Q)
 
-(P): The generator will ask user for a period of years in the format YYYY seperated by ",". The selected rows of years will be shown from the dataset, and mean rainfall over the chosen years will be given. 
+(P): The generator will ask user for a period of years in the format YYYY seperated by ",". The selected rows of years will be shown from the dataset, and mean rainfall over the chosen years will be given.
+
 (F): Saving to file, will create a file with all periods choosen by user during the run-time of the generator. User will be given the choise to name the file. The generator will then quit.
+
 (G): Creating a graph, will ask user to select a period of years and then it will create a .png file with a bar-chart of rainfall from 2009-2023. The selected years will be highlighted in a different color than the rest of the years. The generator will then quit.
+
 (Q): An option to quit the generator. 
 
 Following functions has been created that is used in the pipeline: 
