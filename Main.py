@@ -50,16 +50,17 @@ def main():
 
             #Updating the dictionary based on chosen year function:
             collected_information.update({str(chosen_list[1]) : float(chosen_list[2])})
-            
-            print("\nHere are the chosen years from the dataset: ")
+            print("\n-------------------------------------------------------------\n")
+            print("Here are the chosen years from the dataset: ")
             print(chosen_list[0].loc[chosen_list[0]['Chosen'] == True])
             
             print(f"The mean percipitation for your chosen years {chosen_list[1]}:")
             print(f"{chosen_list[2]} mm\n")
+            print("\n-------------------------------------------------------------\n")
 
         # ----- Generate File (F) ----- #
         elif program_choise == "F" or program_choise == "f":
-            print("The gererator will end when saving to file.")
+            print("The gathered information will reset after this.")
             print("Do you want to choose more years?")
             sure = input("Yes (Y) or No (N): ")
             if sure == "Y" or sure == "y":
@@ -81,14 +82,13 @@ def main():
        
        # ----- Generate Graph (G) ----- #
         elif program_choise == "G" or program_choise == "g":
-            print("This stops the generator and returns a graph:")
             #Choose the years user want diplayed in graph
             chosen_list = ut.choose_year_function(pasvik_summer)
             print("What do you want to call your graph-file?")
             name1 = input("Graph name: ")
             #Creating graph with graph_generator
             ut.graph_generator(chosen_list[0], name1)
-            print(f"Your graph has been saved to the file named {name}.png\n")
+            print(f"Your graph has been saved to the file named {name1}.png\n")
             continue
 
         # ----- Wrong Input handling ----- #

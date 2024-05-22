@@ -14,6 +14,7 @@ Data has been downloaded from Norsk KlimeserviceSenter, Metrologiske institutt: 
 
 ## Running the generator
 The Main.py file is the executer of the generator. Keeping the four files (Main.py, Utilities.py, Pasvik_rain.csv and README.md) in the same folder, run the Main.py file in terminal or from preferred IDE.
+For best visual experience, run in *full-screen* terminal view.
 
 ### Dependencies
 - altair
