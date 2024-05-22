@@ -47,7 +47,6 @@ def MET_data_loader(MET_data_csv):
     return pasvik_summer
 
 
-
 def is_valid_function():
     """Takining input from user. 
     Recusivly asking for new input until the input is in valid format.
@@ -55,7 +54,7 @@ def is_valid_function():
     Returns:
         list: list of integers, years on format YYYY.
     """
-    print("An input:")
+    print("Your input:")
     input_years = input("")
     chosen_years = input_years.split(",")
 
@@ -84,23 +83,25 @@ def is_valid_function():
 
 
 def choose_year_function(dataset):
-    """Running the is_valid function, marking the chosen years as choesn=TRUE in the dataset,
-    calculating mean.
+    """Running the is_valid function, marking the chosen years as choesn=TRUE in the dataset
+    and calculating mean.
 
     Args:
         dataset (dataframe): a dataframe with the percipitation data
 
     Returns:
         list : 
-            dataframe: the modified precipitation dataframe
-            list: the chosen years user want to examine
-            mean_prec: the mean precipitation over the chosen years.
+            dataset (dataframe): the modified precipitation dataframe
+            chosen_years (list): the chosen years user want to examine
+            mean_prec (rounded float): the mean precipitation over the chosen years.
     """
     
     #Making a new column based on chosen year-values and calculation mean precipitation
-    print("Write a list of years you want to examine, seperated by ','")
-    print("Available period: 2009-2023")
-    print("INFO: The year '2013' is not available in the data")
+    print("Write the years you want to examine, seperated by ','")
+    print("Example: 2011,2012")
+    print("INFO:")
+    print("\tAvailable period: 2009-2023")
+    print("\tThe year '2013' is not available in the data")
 
     #Checking if the chosen years are valid input and storing them in list chosen_years
     chosen_years = is_valid_function()
@@ -108,7 +109,7 @@ def choose_year_function(dataset):
     total_prec = float(0)
     dataset["Chosen"] = False
 
-    #Setting the column "chosen" TRUE for chosen years
+    #Setting the column "chosen"=TRUE for chosen years in dataset
     for i in chosen_years:
         dataset.loc[dataset["Year"] == i, "Chosen"] = True
         total_prec += dataset.loc[dataset["Year"] == i, "Prec_mm"].values[0]

@@ -1,17 +1,28 @@
-"""
-This is the Main.py file. It defines the main-function, that runs the interactive generator.
-If Main.py is run alone, the main()-function will be tested.
-"""
 
-# Importing functions from Utilities.py
-#import pandas as pd
-import Utilities as ut
+# ----------------------- P-PIG Generator -------------------------------#
+
+#        This is the Main.py file. It defines the main-function, 
+#               that runs the interactive generator.
+#    To start up the generator, either run the Main.py file in terminal,
+#               or run the file in code editor of choise.
+
+# -----------------------------------------------------------------------#
+
+# Importing necessary libraries
 from asciimatics.screen import Screen
 import time
+# Importing functions from Utilities.py file
+import Utilities as ut
 
 def main(): 
-    """ doc string: 
+    """The main() function runs the generator, mainly handling information-prints to user
+    and calling the necessary funtions used to handle user-wishes.
+    Information that is gathered during the generators run-time, is also stored in variables
+    in the main-function.
+    The main-function is built around a while-loop, that will run as long as user has not decided to 
+    quit (Q). 
     """
+    #Loading data through MET_data_loader function.
     pasvik_summer = ut.MET_data_loader("Pasvik_rain.csv")
 
     #Making an dictionary to store the information:
@@ -79,14 +90,14 @@ def main():
             print(f"You seem to have entered an unvalid input {program_choise}\n")
         
     print("Thank you for using the P-PIG!")
-    print("Outro-screen will start in 5 seconds...")
-    time.sleep(5)
+    print("Outro-screen will start in 6 seconds...")
+    time.sleep(6) #Sleeping for 7 seconds to give user time to process ending-message. 
+
     #Running end-message using asciimetrics packadge
     Screen.wrapper(ut.finished_screen)
 
     return
 
-
-# If runing main directly, run the main-function:
+# If rnning main directly, run the main-function:
 if __name__ == "__main__":
    main()

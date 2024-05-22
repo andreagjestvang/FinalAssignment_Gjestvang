@@ -2,7 +2,7 @@
 
 Welcome to the interactive rain-information for Pasvik weather station
 
-Or the rather dashing name: P-PIG!
+Or the rather dashing name: *P-PIG*!
 
 ### Motivation for analysis
 As I have no specific master thesis yet, I decided to look into relevant weather-data for Pasvik, 
@@ -13,10 +13,27 @@ As lichen-growth is most dependent on the precipitation during summer, this gene
 Data has been downloaded from Norsk KlimeserviceSenter, Metrologiske institutt: https://seklima.met.no/observations/
 
 ### Short Pipeline description
-Several periods of years can be chosen, and in the end, the gather information can be collected and saved to file. 
+The pipeline is a while-loop that will run and store selected information for the user. 
+For each loop, the user will be asked to choose one of the following selections:
+- Choose to examine the mean of a specific period (P)
+- Choose to save collected info to file (F)
+- Create a graph (G)
+- Quit Generator (Q)
 
-The generator can also create and save a bar-chart over the rainfall, highlighting the years chosen by user. 
+(P): The generator will ask user for a period of years in the format YYYY seperated by ",". The selected rows of years will be shown from the dataset, and mean rainfall over the chosen years will be given. 
+(F): Saving to file, will create a file with all periods choosen by user during the run-time of the generator. User will be given the choise to name the file. The generator will then quit.
+(G): Creating a graph, will ask user to select a period of years and then it will create a .png file with a bar-chart of rainfall from 2009-2023. The selected years will be highlighted in a different color than the rest of the years. The generator will then quit.
+(Q): An option to quit the generator. 
 
-(write more about the pipeline...)
+Following functions has been created that is used in the pipeline: 
+- MET_data_loader(MET_data_csv): Loading MET .csv file with rainfall data
+- is_valid_function(): Getting and validatoing user input
+- choose_year_function(dataset): Modifying dataset according to chosen years
+- graph_generator(chosen_dataset,name): Generate .png graph-file
+- save_to_file_function(information_dict, name_csv): Generate .csv information-file
+- finished_screen(screen): Creating an ending message
+
+For further documentation of the functions, go to Utilities.py.
+
 
 ...
