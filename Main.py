@@ -31,6 +31,7 @@ def main():
     program_choise = ""
     print("Welcome to P-PIG, the Pasvik Precipitation Info Generator! :)\n")
     
+    # ----- While Loop -----# 
     while program_choise != "Q":
         print("Please choose what you want to generate: \n")
         print("- Choose to examine the mean of a specific period (P)")
@@ -42,6 +43,7 @@ def main():
         program_choise = input("Your input: ")
         chosen_list = []
         
+        # ----- Generate Infomation (P) ----- #
         if program_choise == "P" or program_choise == "p":
             #Saving the chosen list [chosen_dataset, chosen_years, mean_per]:
             chosen_list = ut.choose_year_function(pasvik_summer)
@@ -55,6 +57,7 @@ def main():
             print(f"The mean percipitation for your chosen years {chosen_list[1]}:")
             print(f"{chosen_list[2]} mm\n")
 
+        # ----- Generate File (F) ----- #
         elif program_choise == "F" or program_choise == "f":
             print("The gererator will end when saving to file.")
             print("Do you want to choose more years?")
@@ -65,33 +68,36 @@ def main():
                 continue
             elif sure == "N" or sure == "n":
                 print("What do you want to call your file?")
-                name = input("")
+                name = input("File name: ")
                 #Saving the file with the save_to_file function with the inputted name
                 ut.save_to_file_function(collected_information, name)
-                print(f"Your information has been stored the file named {name}.csv\n")
-                program_choise = "Q"
+                print(f"Your information has been stored the file named {name}.csv")
+                print(f"Resetting gathered information...\n")
+                collected_information.clear()
+                continue
             else:
                 print("You must have written the wrong letter.")
                 print("Please write Y for yes, or N for no \n")
        
+       # ----- Generate Graph (G) ----- #
         elif program_choise == "G" or program_choise == "g":
             print("This stops the generator and returns a graph:")
             #Choose the years user want diplayed in graph
             chosen_list = ut.choose_year_function(pasvik_summer)
             print("What do you want to call your graph-file?")
-            name1 = input("Name: ")
+            name1 = input("Graph name: ")
             #Creating graph with graph_generator
             ut.graph_generator(chosen_list[0], name1)
-            print("\n")
-            print("Thank you for using the P-PIG!")
-            program_choise = "Q"
-            return
+            print(f"Your graph has been saved to the file named {name}.png\n")
+            continue
+
+        # ----- Wrong Input handling ----- #
         elif program_choise != "Q":
             print(f"You seem to have entered an unvalid input {program_choise}\n")
         
     print("Thank you for using the P-PIG!")
     print("Outro-screen will start in 6 seconds...")
-    time.sleep(6) #Sleeping for 7 seconds to give user time to process ending-message. 
+    time.sleep(6) #Sleeping for 6 seconds to give user time to process ending-message. 
 
     #Running end-message using asciimetrics packadge
     Screen.wrapper(ut.finished_screen)
