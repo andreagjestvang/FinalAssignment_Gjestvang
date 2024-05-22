@@ -12,6 +12,9 @@ As lichen-growth is most dependent on the precipitation during summer, this gene
 
 Data has been downloaded from Norsk KlimeserviceSenter, Metrologiske institutt: https://seklima.met.no/observations/
 
+### Running the generator
+The Main.py file is the executer of the generator. Keeping the four files (Main.py, Utilities.py, Pasvik_rain.csv and README.md) in the same folder, run the Main.py file in terminal or from preferred IDE.
+
 ### Short Pipeline description
 The pipeline is a while-loop that will run and store selected information for the user. 
 For each loop, the user will be asked to choose one of the following selections:
