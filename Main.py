@@ -29,7 +29,8 @@ def main():
     collected_information = {}
 
     program_choise = ""
-    print("Welcome to P-PIG, the Pasvik Precipitation Info Generator! :)\n")
+    print("\n~~~~~~~ Welcome to P-PIG ~~~~~~~")
+    print("the Pasvik Precipitation Info Generator! :)\n")
     
     # ----- While Loop -----# 
     while program_choise != "Q":
