@@ -4,7 +4,7 @@ Welcome to the interactive rain-information for Pasvik weather station
 
 Or the rather dashing name: *P-PIG*!
 
-### Motivation for analysis
+## Motivation for analysis
 As I have no specific master thesis yet, I decided to look into relevant weather-data for Pasvik, 
 where I'm most likley writing my thesis on lichen growth. We will look into lichen growth during the last 15, 10, 5 and 0 years, and therefore require to look into the amount of rain that has fallen during different periods of time. That is why I chose to focus on the ability to choose and store a user-decided period of years, and creating a script depending on user input.
 
@@ -12,17 +12,17 @@ As lichen-growth is most dependent on the precipitation during summer, this gene
 
 Data has been downloaded from Norsk KlimeserviceSenter, Metrologiske institutt: https://seklima.met.no/observations/
 
-### Running the generator
+## Running the generator
 The Main.py file is the executer of the generator. Keeping the four files (Main.py, Utilities.py, Pasvik_rain.csv and README.md) in the same folder, run the Main.py file in terminal or from preferred IDE.
 
-## Dependencies
+### Dependencies
 - altair
 - asciimatics
 - pandas
 - pathlib
 - time
 
-### Short Pipeline description
+## Short Pipeline description
 The pipeline is a while-loop that will run and store selected information for the user. 
 For each loop, the user will be asked to choose one of the following selections:
 - Choose to examine the mean of a specific period (P)
